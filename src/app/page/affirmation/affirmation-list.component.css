@@ -1,0 +1,14 @@
+.button-panel{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.editable{
+    color: #86aaff;
+    border-bottom: 1px dotted;
+}
+
+.validation{
+    font-size: 5px;
+    margin-top: 3px;
+}

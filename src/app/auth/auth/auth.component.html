@@ -1,0 +1,31 @@
+<div id="LoginForm">
+<div class="container">
+  <div class="login-form">
+    <div class="main-div">
+      <div class="panel">
+        <h2>Вход</h2>
+        <p>
+          Вход в закрытую часть сайта
+          введите логин и пароль
+        </p>
+      </div>
+      <form id="Login" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <input type="email" class="form-control" id="inputEmail" placeholder="Email Address" formControlName="email">
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control" id="inputPassword" placeholder="Password"  formControlName="password">
+
+          <input type="hidden" name="remember_me" value="1">
+        </div>
+        <div class="forgot">
+          <div class="default-password">login: admin@admin.com</div>
+          <div class="default-password">password: adminadmin123</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Вход</button>
+      </form>
+    </div>
+  </div>
+</div>
+</div>

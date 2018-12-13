@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+
+  <div class="button-panel">
+    <app-create-affirmation (onCreated)="onCreated($event)"></app-create-affirmation>
+  </div>
+
+
+  <div class="row">
+    <table class="table">
+      <thead>
+      <tr>
+        <td scope="col">#</td>
+        <td scope="col">Аффирмация</td>
+        <td scope="col">Кнопки</td>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let affirmation of affirmations">
+        <td scope="row">{{affirmation.id}}</td>
+        <td>
+          <div *ngIf="affirmation.editing">
+            <form name="form" (ngSubmit)="f.form.valid && onSubmitted(affirmation)" #f="ngForm" novalidate>
+              <div class="form-group">
+                <input type="text" class="form-control" name="firstName" [(ngModel)]="affirmation.title" #title="ngModel" [ngClass]="{ 'is-invalid': f.submitted && title.invalid }" required />
+                <div *ngIf="f.submitted && title.invalid" class="invalid-feedback">
+                  <div *ngIf="title.errors.required">Поле обязательно для заполнения</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-sm btn-outline-primary"><i class="fa fa-check"></i> Сохранить</button>
+              </div>
+            </form>
+
+          </div>
+          <div *ngIf="!affirmation.editing">
+            <span class="editable" (click)="edit(affirmation)" (focus)="edit($event, affirmation);">{{affirmation.title}}</span>
+          </div>
+        </td>
+        <td>
+          <div *ngIf="!affirmation.editing" class="d-inline">
+            <button (click)="edit(affirmation)" class="btn btn-sm btn-outline-primary"><i class="fa fa-pencil"></i></button>
+          </div>
+          &nbsp;
+          <button (click)="onDeleted(affirmation)" class="btn btn-sm btn-outline-danger"> <i class="fa fa-close"></i></button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

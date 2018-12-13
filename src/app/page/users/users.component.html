@@ -1,0 +1,19 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Логин</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <th scope="row">{{user.id}}</th>
+      <td>{{user.email}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
